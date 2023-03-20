@@ -1,45 +1,44 @@
-import React from "react";
-import { NavigationDots, SocialMedia } from "../components";
+import React from 'react'
+import { NavigationDots, SocialMedia } from '../components'
 
 const AppWrap = (Component, idName, classNames) =>
-  function HOC() {
+  function HOC () {
+    const date = new Date()
+    const year = date.getFullYear()
 
-    const date =  new Date();
-    const year = date.getFullYear();
-    
     const month = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    
-    let mon = month[date.getMonth()];
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ]
+
+    const mon = month[date.getMonth()]
 
     return (
       <div id={idName} className={`app__container ${classNames}`}>
         <SocialMedia />
-        <div className="app__wrapper app__flex">
+        <div className='app__wrapper app__flex'>
           <Component />
 
-          <div className="copyright">
-            <p className="p-text">
+          <div className='copyright'>
+            <p className='p-text'>
               @{mon} <span>{year}</span> SOUMYA
             </p>
-            <p className="p-text">All rights reserved</p>
+            <p className='p-text'>All rights reserved</p>
           </div>
         </div>
         <NavigationDots active={idName} />
       </div>
-    );
-  };
+    )
+  }
 
-export default AppWrap;
+export default AppWrap
